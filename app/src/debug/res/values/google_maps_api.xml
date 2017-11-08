@@ -1,0 +1,6 @@
+<resources>
+    <!--
+    https://developers.google.com/maps/documentation/android/start#get-key
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDeDu_vK8iqdl1cvj-cPdB5psvoeGtrIJo</string>
+</resources>
