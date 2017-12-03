@@ -19,6 +19,7 @@ public class LocationsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.locations_list);
+        data = (ArrayList<String>) getIntent().getSerializableExtra("locations");
 
         setupCloseButton();
 
@@ -30,6 +31,7 @@ public class LocationsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
+                intent.putExtra("location", data.get(position));
                 setResult(RESULT_OK, intent);
                 finish();
             }

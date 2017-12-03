@@ -71,6 +71,6 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
     }
 
     public String getNameOfLocation() {
-        return "";
+        return mMap.getCameraPosition().toString();
     }
 }
