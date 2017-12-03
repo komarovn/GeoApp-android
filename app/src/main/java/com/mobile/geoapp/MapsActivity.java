@@ -1,6 +1,9 @@
 package com.mobile.geoapp;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,5 +42,26 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
 
         mMap.addMarker(new MarkerOptions().position(london).title("Marker in London"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 15));
+    }
+
+    public void zoomIn() {
+        mMap.moveCamera(CameraUpdateFactory.zoomIn());
+    }
+
+    public void zoomOut() {
+        mMap.moveCamera(CameraUpdateFactory.zoomOut());
+    }
+
+    public void showCurrentLocation() {
+        if (mMap != null) {
+            if (ActivityCompat.checkSelfPermission(this.getContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this.getContext(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                            PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
+        }
     }
 }

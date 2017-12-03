@@ -3,6 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapHolder"
+        android:layout_width="match_parent"
+        android:layout_height="456dp"
+        android:layout_gravity="top"
+        android:focusable="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,9 +31,31 @@
 
     </LinearLayout>
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapHolder"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/showCurrentLocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Show Current Location" />
+
+        <Button
+            android:id="@+id/saveLocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save Location" />
+
+        <Button
+            android:id="@+id/goToButon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Go To..." />
+    </LinearLayout>
 
 </LinearLayout>
