@@ -1,5 +1,6 @@
 package com.mobile.geoapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,10 +10,17 @@ import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.model.CameraPosition;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private MapsActivity mapFragment;
+    private Map<String, CameraPosition> locations = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +58,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupLocationButtons() {
         Button showCurrentLocationButton = (Button) findViewById(R.id.showCurrentLocationButton);
+        Button saveLocationButton = (Button) findViewById(R.id.saveLocationButton);
+        Button goToButton = (Button) findViewById(R.id.goToButon);
+
         showCurrentLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mapFragment.showCurrentLocation();
+            }
+        });
+
+        saveLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 locations.put(mapFragment.getNameOfLocation(), mapFragment.getLocation());
+            }
+        });
+
+        goToButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LocationsActivity.class);
+                startActivityForResult(intent, 0);
             }
         });
     }
